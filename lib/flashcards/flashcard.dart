@@ -3,6 +3,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:study_deck/flashcards/card_content.dart';
 
+// Class: Flashcard, CardContent info and flipping animation management
 class Flashcard extends StatefulWidget {
   const Flashcard({
     super.key,
@@ -15,10 +16,12 @@ class Flashcard extends StatefulWidget {
   State<Flashcard> createState() => _Flashcard();
 }
 
+// Class: _Flashcard, state management and UI for Flashcard
 class _Flashcard extends State<Flashcard> {
   @override
   Widget build(BuildContext context) {
     if (widget.cardContent.reverse) {
+      // Basic Format, definitions/associations on the front, vocab on back
       return FlipCard(
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,
@@ -40,6 +43,7 @@ class _Flashcard extends State<Flashcard> {
             ),
           ));
     } else {
+      // Flipped Format, definitions/associations on back, vobac on front
       return FlipCard(
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,
@@ -63,9 +67,11 @@ class _Flashcard extends State<Flashcard> {
     }
   }
 
+  // Brief: define visual appearance of flashcard
   BoxDecoration decorate() {
     return const BoxDecoration(
         color: Color.fromARGB(255, 161, 161, 255),
+        // Create rounded corners
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -74,6 +80,7 @@ class _Flashcard extends State<Flashcard> {
         ));
   }
 
+  // Brief: define size of flashcard
   BoxConstraints setSize() {
     return const BoxConstraints(
       minWidth: 300,
@@ -83,29 +90,31 @@ class _Flashcard extends State<Flashcard> {
     );
   }
 
+  // Brief:
   List<Widget> addFrontContent() {
     final AudioPlayer audioPlayer = AudioPlayer();
     List<Widget> column = [];
     final current = widget.cardContent;
 
     // Definition on Card's front
-    if (current.definition != null && (current.audioLink == null && current.imageLink == null) ) {
+    if (current.definition != null &&
+        (current.audioLink == null && current.imageLink == null)) {
       column.add(Text((widget.cardContent.definition!)));
     }
     // Image on Card's front
     if (widget.cardContent.imageLink != null) {
       column.add(Container(
-        constraints: const BoxConstraints(maxWidth: 250.0, maxHeight: 200.0),
-        child: Image(image: AssetImage(widget.cardContent.imageLink!))));
+          constraints: const BoxConstraints(maxWidth: 250.0, maxHeight: 200.0),
+          child: Image(image: AssetImage(widget.cardContent.imageLink!))));
     }
     // Audio on Card's front
     if (widget.cardContent.audioLink != null) {
       column.add(ElevatedButton.icon(
-                onPressed: () async {
-                  await audioPlayer.play(AssetSource(widget.cardContent.audioLink!));
-                },
-                label: const Text(''),
-                icon: const Icon(Icons.audio_file)));
+          onPressed: () async {
+            await audioPlayer.play(AssetSource(widget.cardContent.audioLink!));
+          },
+          label: const Text(''),
+          icon: const Icon(Icons.audio_file)));
     }
     return column;
   }
@@ -119,8 +128,9 @@ class _Flashcard extends State<Flashcard> {
       column.add(Text(widget.cardContent.vocabWord!));
     }
 
-    // Definition on card's back 
-    if (current.definition != null && (current.audioLink != null || current.imageLink != null) ) {
+    // Definition on card's back
+    if (current.definition != null &&
+        (current.audioLink != null || current.imageLink != null)) {
       column.add(Text((widget.cardContent.definition!)));
     }
 

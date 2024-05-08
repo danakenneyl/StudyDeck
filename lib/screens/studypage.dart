@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/flashcard.dart';
 import 'package:study_deck/flashcards/card_content.dart';
 
-
 class StudyPage extends StatefulWidget {
   const StudyPage({super.key, required this.title});
   final String title;
@@ -22,23 +21,23 @@ class _StudyPage extends State<StudyPage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
               Flashcard(cardContent: content[cardIndex]),
               const SizedBox(width: 20),
-              // Flip through flash cards
               ElevatedButton.icon(
                   onPressed: () {
+                    // User flips through flash cards
                     nextFlashCard();
                   },
                   label: const Text(''),
                   icon: const Icon(Icons.arrow_forward)),
-              ]
-            ),
+            ]),
       ),
     );
   }
 
+  // Updates to next current index
   void nextFlashCard() {
     setState(() {
       if (cardIndex >= content.length - 1) {
