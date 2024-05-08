@@ -23,4 +23,7 @@ List<CardContent> content = [
   CardContent(vocabWord: 'def1', audioLink: 'audio/ma.m4a', reverse: true),
   CardContent(vocabWord: 'def2', audioLink: 'audio/ma.m4a', imageLink: 'assets/images/ChinChimineyChin-ree.png'),
   CardContent(vocabWord: 'def2', audioLink: 'audio/ma.m4a', imageLink: 'assets/images/ChinChimineyChin-ree.png', reverse: true),
+  CardContent(definition: 'defining defining defining', vocabWord: 'def2', audioLink: 'audio/ma.m4a', imageLink: 'assets/images/ChinChimineyChin-ree.png'),
+  CardContent(definition: 'defining defining defining', vocabWord: 'def2', audioLink: 'audio/ma.m4a', imageLink: 'assets/images/ChinChimineyChin-ree.png', reverse: true),
+
 ];
