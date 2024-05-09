@@ -1,22 +1,23 @@
-/*  Class: CardContent stores information displayed on flashcard entry
+/*  Class: CardContent stores information displayed on flashcard
     Parameters: vocabWord,  string 
                 definition, string
                 audioLink,  string, format "audio/..."
                 imageLink,  string, format assets/images/..."
-                reverse,    bool,   default false determines on which side of
-                                    the card information appears 
+                flip,    bool,   default false
 */
 class CardContent {
   final String? vocabWord;
   final String? definition;
   final String? audioLink;
   final String? imageLink;
+  final String? pronounce;
   final bool reverse;
   CardContent(
       {this.vocabWord,
       this.definition,
       this.audioLink,
       this.imageLink,
+      this.pronounce,
       this.reverse = false});
 }
 

@@ -90,13 +90,13 @@ class _Flashcard extends State<Flashcard> {
     );
   }
 
-  // Brief:
+  // Brief: add content that will be on front of the flashcard to a list
   List<Widget> addFrontContent() {
     final AudioPlayer audioPlayer = AudioPlayer();
     List<Widget> column = [];
     final current = widget.cardContent;
 
-    // Definition on Card's front
+    // Definition on Card's front (image and audio don't exist)
     if (current.definition != null &&
         (current.audioLink == null && current.imageLink == null)) {
       column.add(Text((widget.cardContent.definition!)));
@@ -105,30 +105,40 @@ class _Flashcard extends State<Flashcard> {
     if (widget.cardContent.imageLink != null) {
       column.add(Container(
           constraints: const BoxConstraints(maxWidth: 250.0, maxHeight: 200.0),
-          child: Image(image: AssetImage(widget.cardContent.imageLink!))));
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: Image(image: AssetImage(widget.cardContent.imageLink!)))));
     }
     // Audio on Card's front
     if (widget.cardContent.audioLink != null) {
       column.add(ElevatedButton.icon(
-          onPressed: () async {
-            await audioPlayer.play(AssetSource(widget.cardContent.audioLink!));
-          },
-          label: const Text(''),
-          icon: const Icon(Icons.audio_file)));
+        onPressed: () async {
+          await audioPlayer.play(AssetSource(widget.cardContent.audioLink!));
+        },
+        label: const Text(''),
+        icon: const Icon(
+          Icons.audio_file,
+        ),
+        style: ElevatedButton.styleFrom(
+          // shape: const CircleBorder(),
+          padding: const EdgeInsets.all(15),
+        ),
+      ));
     }
     return column;
   }
 
+  // Brief: add content that will be on back of flashcard to list
   List<Widget> addBackContent() {
     List<Widget> column = [];
     final current = widget.cardContent;
 
-    // Vocab on card's back
+    // If Vocab string exists
     if (widget.cardContent.vocabWord != null) {
       column.add(Text(widget.cardContent.vocabWord!));
     }
 
-    // Definition on card's back
+    // If definition string exists (image or audio exists)
     if (current.definition != null &&
         (current.audioLink != null || current.imageLink != null)) {
       column.add(Text((widget.cardContent.definition!)));
