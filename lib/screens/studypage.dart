@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/flashcard.dart';
-import 'package:study_deck/flashcards/card_content.dart';
+import 'package:study_deck/flashcards/card_content/card_content.dart';
 
 class StudyPage extends StatefulWidget {
   const StudyPage({super.key, required this.title});
@@ -12,6 +12,8 @@ class StudyPage extends StatefulWidget {
 
 class _StudyPage extends State<StudyPage> {
   int cardIndex = 0;
+  Flashcard currCard = Flashcard(cardContent: content[0]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,28 +25,20 @@ class _StudyPage extends State<StudyPage> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Flashcard(cardContent: content[cardIndex]),
+              currCard,
               const SizedBox(width: 20),
               ElevatedButton.icon(
                   onPressed: () {
                     // User flips through flash cards
-                    nextFlashCard();
+                    setState(() {
+                      cardIndex = (cardIndex + 1) % content.length;
+                      currCard = Flashcard(cardContent: content[cardIndex]);
+                    });
                   },
                   label: const Text(''),
                   icon: const Icon(Icons.arrow_forward)),
             ]),
       ),
     );
-  }
-
-  // Updates to next current index
-  void nextFlashCard() {
-    setState(() {
-      if (cardIndex >= content.length - 1) {
-        cardIndex = 0;
-      } else {
-        cardIndex++;
-      }
-    });
   }
 }
