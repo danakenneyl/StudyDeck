@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/card_content/study_item.dart';
 
-// Class: StudyPicture, functionality of StudyWord's associated Image
-// Parameters:  isOnFront,  bool,   see Item doc
-//              imageLink,  String, image link of form "assets/images/..."
+/*  Class: StudyPicture, functionality of StudyWord's associated Image
+    Parameters: isOnFront,  bool,   see Item doc
+                imageLink,  String, image link of form "assets/images/..."
+*/
 class StudyPicture extends StudyItem {
-  // Study Picture Constructor
+  /// Study Picture Constructor
   const StudyPicture(
       {super.key, required super.isOnFront, required this.imageLink});
 

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:study_deck/flashcards/card_content/card_content.dart';
 
-// Class: Flashcard, CardContent info and flipping animation management
+/*  Class: Flashcard, CardContent info and flipping animation management
+    Parameters: cardContent, CardContent, items that appear on single card
+*/
 class Flashcard extends StatefulWidget {
   const Flashcard({
     super.key,
@@ -20,7 +22,7 @@ class _Flashcard extends State<Flashcard> {
   @override
   Widget build(BuildContext context) {
     if (!widget.cardContent.reverse) {
-      // Basic Format, definitions/associations on the front, vocab on back
+      // Default Format, items marked to appear on front, do appear on front
       return FlipCard(
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,
@@ -42,7 +44,7 @@ class _Flashcard extends State<Flashcard> {
             ),
           ));
     } else {
-      // Flipped Format, definitions/associations on back, vobac on front
+      // Flipped Format, items marked to appear on front, appear on back
       return FlipCard(
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,

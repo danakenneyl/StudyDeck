@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/card_content/study_item.dart';
 
-// Class: StudyDefinition, functionality of StudyWord's definition
-// Parameters:  isOnFront,  bool,   see Item doc
-//              definition, String, text to be displayed on card
+/*  Class: StudyDefinition, functionality of StudyWord's definition
+    Parameters: isOnFront,  bool,   see Item doc
+                definition, String, text to be displayed on card
+*/
 class StudyDefinition extends StudyItem {
-  // Study Definition Constructor
+  /// Study Definition Constructor
   const StudyDefinition(
       {super.key, required super.isOnFront, required this.definition});
 

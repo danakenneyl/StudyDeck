@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/card_content/study_item.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-// Class: StudyAudio, functionality of StudyWord's audio pronunciation
-// Parameters:  isOnFront,  bool,   see Item doc
-//              audioLink,  String, audio link of form "audio/..."
+/*  Class: StudyAudio, functionality of StudyWord's audio pronunciation
+    Parameters: isOnFront,  bool,   see Item doc
+                audioLink,  String, audio link of form "audio/..."
+              */
 class StudyAudio extends StudyItem {
-  // Study Audio Constructor
+  /// Study Audio Constructor
   StudyAudio({super.key, required super.isOnFront, required this.audioLink});
 
   final String audioLink;
+
   final AudioPlayer audioPlayer = AudioPlayer();
 
   @override
