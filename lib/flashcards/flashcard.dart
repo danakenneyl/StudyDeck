@@ -24,6 +24,7 @@ class _Flashcard extends State<Flashcard> {
     if (!widget.cardContent.reverse) {
       // Default Format, items marked to appear on front, do appear on front
       return FlipCard(
+          key: UniqueKey(),
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,
           side: CardSide.FRONT,
@@ -46,15 +47,16 @@ class _Flashcard extends State<Flashcard> {
     } else {
       // Flipped Format, items marked to appear on front, appear on back
       return FlipCard(
+          key: UniqueKey(),
           fill: Fill.fillBack,
           direction: FlipDirection.VERTICAL,
-          side: CardSide.FRONT,
+          side: CardSide.BACK,
           front: Container(
             decoration: decorate(),
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.backContent,
+              children: widget.cardContent.frontContent,
             ),
           ),
           back: Container(
@@ -62,7 +64,7 @@ class _Flashcard extends State<Flashcard> {
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.frontContent,
+              children: widget.cardContent.backContent,
             ),
           ));
     }
