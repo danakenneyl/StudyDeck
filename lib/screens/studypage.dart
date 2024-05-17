@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/flashcard.dart';
-import 'package:study_deck/flashcards/card_content/card_content.dart';
+import 'package:study_deck/flashcards/card_content/temp.dart';
 
 /*  Class:  StudyPage, handles UI functionality for studying
     Parameters: title,  String, page title to be displayed 

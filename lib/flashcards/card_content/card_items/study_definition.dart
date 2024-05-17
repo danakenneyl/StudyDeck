@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_deck/flashcards/card_content/study_item.dart';
+import 'package:study_deck/flashcards/card_content/card_item_temp.dart';
 
 /*  Class: StudyDefinition, functionality of StudyWord's definition
     Parameters: isOnFront,  bool,   see Item doc
