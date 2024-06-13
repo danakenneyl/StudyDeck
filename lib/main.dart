@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:study_deck/screens/studypage.dart';
+import 'package:study_deck/screens/create_card.dart';
+// import 'package:study_deck/screens/studypage.dart';
 
 void main() {
   runApp(const StudyApp());
@@ -18,7 +19,7 @@ class StudyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const StudyPage(title: 'Study Deck Home Page'),
+      home: const CreateCardPage(title: 'Study Deck Home Page'),
     );
   }
 }
