@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 */
 class StudyItem extends StatelessWidget {
   // Item Constructor
-  const StudyItem({super.key, required this.isOnFront});
+  const StudyItem({super.key, required this.isOnFront, this.content});
 
   final bool isOnFront;
+  final String? content;
 
   @override
   Widget build(BuildContext context) {

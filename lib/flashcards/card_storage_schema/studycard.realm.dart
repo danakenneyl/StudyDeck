@@ -1,28 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'card.dart';
+part of 'studycard.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
-  Card(
+class StudyCard extends _StudyCard
+    with RealmEntity, RealmObjectBase, RealmObject {
+  StudyCard(
     ObjectId id,
     String deckName, {
-    Iterable<CardItem> frontContent = const [],
-    Iterable<CardItem> backContent = const [],
+    Iterable<StudyCardItem> frontContent = const [],
+    Iterable<StudyCardItem> backContent = const [],
   }) {
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'deckName', deckName);
-    RealmObjectBase.set<RealmList<CardItem>>(
-        this, 'frontContent', RealmList<CardItem>(frontContent));
-    RealmObjectBase.set<RealmList<CardItem>>(
-        this, 'backContent', RealmList<CardItem>(backContent));
+    RealmObjectBase.set<RealmList<StudyCardItem>>(
+        this, 'frontContent', RealmList<StudyCardItem>(frontContent));
+    RealmObjectBase.set<RealmList<StudyCardItem>>(
+        this, 'backContent', RealmList<StudyCardItem>(backContent));
   }
 
-  Card._();
+  StudyCard._();
 
   @override
   ObjectId get id => RealmObjectBase.get<ObjectId>(this, 'id') as ObjectId;
@@ -36,30 +37,31 @@ class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
   set deckName(String value) => RealmObjectBase.set(this, 'deckName', value);
 
   @override
-  RealmList<CardItem> get frontContent =>
-      RealmObjectBase.get<CardItem>(this, 'frontContent')
-          as RealmList<CardItem>;
+  RealmList<StudyCardItem> get frontContent =>
+      RealmObjectBase.get<StudyCardItem>(this, 'frontContent')
+          as RealmList<StudyCardItem>;
   @override
-  set frontContent(covariant RealmList<CardItem> value) =>
+  set frontContent(covariant RealmList<StudyCardItem> value) =>
       throw RealmUnsupportedSetError();
 
   @override
-  RealmList<CardItem> get backContent =>
-      RealmObjectBase.get<CardItem>(this, 'backContent') as RealmList<CardItem>;
+  RealmList<StudyCardItem> get backContent =>
+      RealmObjectBase.get<StudyCardItem>(this, 'backContent')
+          as RealmList<StudyCardItem>;
   @override
-  set backContent(covariant RealmList<CardItem> value) =>
+  set backContent(covariant RealmList<StudyCardItem> value) =>
       throw RealmUnsupportedSetError();
 
   @override
-  Stream<RealmObjectChanges<Card>> get changes =>
-      RealmObjectBase.getChanges<Card>(this);
+  Stream<RealmObjectChanges<StudyCard>> get changes =>
+      RealmObjectBase.getChanges<StudyCard>(this);
 
   @override
-  Stream<RealmObjectChanges<Card>> changesFor([List<String>? keyPaths]) =>
-      RealmObjectBase.getChangesFor<Card>(this, keyPaths);
+  Stream<RealmObjectChanges<StudyCard>> changesFor([List<String>? keyPaths]) =>
+      RealmObjectBase.getChangesFor<StudyCard>(this, keyPaths);
 
   @override
-  Card freeze() => RealmObjectBase.freezeObject<Card>(this);
+  StudyCard freeze() => RealmObjectBase.freezeObject<StudyCard>(this);
 
   EJsonValue toEJson() {
     return <String, dynamic>{
@@ -70,8 +72,8 @@ class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
     };
   }
 
-  static EJsonValue _toEJson(Card value) => value.toEJson();
-  static Card _fromEJson(EJsonValue ejson) {
+  static EJsonValue _toEJson(StudyCard value) => value.toEJson();
+  static StudyCard _fromEJson(EJsonValue ejson) {
     return switch (ejson) {
       {
         'id': EJsonValue id,
@@ -79,7 +81,7 @@ class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
         'frontContent': EJsonValue frontContent,
         'backContent': EJsonValue backContent,
       } =>
-        Card(
+        StudyCard(
           fromEJson(id),
           fromEJson(deckName),
           frontContent: fromEJson(frontContent),
@@ -90,15 +92,17 @@ class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
   }
 
   static final schema = () {
-    RealmObjectBase.registerFactory(Card._);
+    RealmObjectBase.registerFactory(StudyCard._);
     register(_toEJson, _fromEJson);
-    return SchemaObject(ObjectType.realmObject, Card, 'Card', [
+    return SchemaObject(ObjectType.realmObject, StudyCard, 'StudyCard', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('deckName', RealmPropertyType.string),
       SchemaProperty('frontContent', RealmPropertyType.object,
-          linkTarget: 'CardItem', collectionType: RealmCollectionType.list),
+          linkTarget: 'StudyCardItem',
+          collectionType: RealmCollectionType.list),
       SchemaProperty('backContent', RealmPropertyType.object,
-          linkTarget: 'CardItem', collectionType: RealmCollectionType.list),
+          linkTarget: 'StudyCardItem',
+          collectionType: RealmCollectionType.list),
     ]);
   }();
 
@@ -106,9 +110,9 @@ class Card extends _Card with RealmEntity, RealmObjectBase, RealmObject {
   SchemaObject get objectSchema => RealmObjectBase.getSchema(this) ?? schema;
 }
 
-class CardItem extends _CardItem
+class StudyCardItem extends _StudyCardItem
     with RealmEntity, RealmObjectBase, RealmObject {
-  CardItem(
+  StudyCardItem(
     ObjectId id,
     String widgetName,
     String content,
@@ -120,7 +124,7 @@ class CardItem extends _CardItem
     RealmObjectBase.set(this, 'isOnFront', isOnFront);
   }
 
-  CardItem._();
+  StudyCardItem._();
 
   @override
   ObjectId get id => RealmObjectBase.get<ObjectId>(this, 'id') as ObjectId;
@@ -145,15 +149,16 @@ class CardItem extends _CardItem
   set isOnFront(bool value) => RealmObjectBase.set(this, 'isOnFront', value);
 
   @override
-  Stream<RealmObjectChanges<CardItem>> get changes =>
-      RealmObjectBase.getChanges<CardItem>(this);
+  Stream<RealmObjectChanges<StudyCardItem>> get changes =>
+      RealmObjectBase.getChanges<StudyCardItem>(this);
 
   @override
-  Stream<RealmObjectChanges<CardItem>> changesFor([List<String>? keyPaths]) =>
-      RealmObjectBase.getChangesFor<CardItem>(this, keyPaths);
+  Stream<RealmObjectChanges<StudyCardItem>> changesFor(
+          [List<String>? keyPaths]) =>
+      RealmObjectBase.getChangesFor<StudyCardItem>(this, keyPaths);
 
   @override
-  CardItem freeze() => RealmObjectBase.freezeObject<CardItem>(this);
+  StudyCardItem freeze() => RealmObjectBase.freezeObject<StudyCardItem>(this);
 
   EJsonValue toEJson() {
     return <String, dynamic>{
@@ -164,8 +169,8 @@ class CardItem extends _CardItem
     };
   }
 
-  static EJsonValue _toEJson(CardItem value) => value.toEJson();
-  static CardItem _fromEJson(EJsonValue ejson) {
+  static EJsonValue _toEJson(StudyCardItem value) => value.toEJson();
+  static StudyCardItem _fromEJson(EJsonValue ejson) {
     return switch (ejson) {
       {
         'id': EJsonValue id,
@@ -173,7 +178,7 @@ class CardItem extends _CardItem
         'content': EJsonValue content,
         'isOnFront': EJsonValue isOnFront,
       } =>
-        CardItem(
+        StudyCardItem(
           fromEJson(id),
           fromEJson(widgetName),
           fromEJson(content),
@@ -184,9 +189,10 @@ class CardItem extends _CardItem
   }
 
   static final schema = () {
-    RealmObjectBase.registerFactory(CardItem._);
+    RealmObjectBase.registerFactory(StudyCardItem._);
     register(_toEJson, _fromEJson);
-    return SchemaObject(ObjectType.realmObject, CardItem, 'CardItem', [
+    return SchemaObject(
+        ObjectType.realmObject, StudyCardItem, 'StudyCardItem', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('widgetName', RealmPropertyType.string),
       SchemaProperty('content', RealmPropertyType.string),

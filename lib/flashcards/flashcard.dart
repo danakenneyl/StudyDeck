@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:study_deck/flashcards/card_content/card_content.dart';
 
 /*  Class: Flashcard, CardContent info and flipping animation management
     Parameters: cardContent, CardContent, items that appear on single card
@@ -8,10 +7,14 @@ import 'package:study_deck/flashcards/card_content/card_content.dart';
 class Flashcard extends StatefulWidget {
   const Flashcard({
     super.key,
-    required this.cardContent,
+    required this.frontContent,
+    required this.backContent,
+    this.reverse = false,
   });
 
-  final CardContent cardContent;
+  final List<Widget> frontContent;
+  final List<Widget> backContent;
+  final bool reverse;
 
   @override
   State<Flashcard> createState() => _Flashcard();
@@ -21,7 +24,7 @@ class Flashcard extends StatefulWidget {
 class _Flashcard extends State<Flashcard> {
   @override
   Widget build(BuildContext context) {
-    if (!widget.cardContent.reverse) {
+    if (!widget.reverse) {
       // Default Format, items marked to appear on front, do appear on front
       return FlipCard(
           key: UniqueKey(),
@@ -33,7 +36,7 @@ class _Flashcard extends State<Flashcard> {
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.frontContent,
+              children: widget.frontContent,
             ),
           ),
           back: Container(
@@ -41,7 +44,7 @@ class _Flashcard extends State<Flashcard> {
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.backContent,
+              children: widget.backContent,
             ),
           ));
     } else {
@@ -56,7 +59,7 @@ class _Flashcard extends State<Flashcard> {
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.frontContent,
+              children: widget.frontContent,
             ),
           ),
           back: Container(
@@ -64,7 +67,7 @@ class _Flashcard extends State<Flashcard> {
             constraints: setSize(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.cardContent.backContent,
+              children: widget.backContent,
             ),
           ));
     }

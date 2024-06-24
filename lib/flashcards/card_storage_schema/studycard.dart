@@ -1,5 +1,5 @@
 import 'package:realm/realm.dart';
-part 'card.realm.dart';
+part 'studycard.realm.dart';
 
 /*  Class: _Card private class stores flashcard
     Parameters: id,           ObjectID,         unique identifier
@@ -8,12 +8,12 @@ part 'card.realm.dart';
                 backContent,  List<_CardItem>,  items displayed on card back                                             
 */
 @RealmModel()
-class _Card {
+class _StudyCard {
   @PrimaryKey()
   late ObjectId id;
   late String deckName;
-  late List<_CardItem> frontContent;
-  late List<_CardItem> backContent;
+  late List<_StudyCardItem> frontContent;
+  late List<_StudyCardItem> backContent;
 }
 
 /*  Class: _CardItem private class single unit to be displayed on flashcard
@@ -27,7 +27,7 @@ class _Card {
                 isOnFront   bool,     determines _Card class list assignment
 */
 @RealmModel()
-class _CardItem {
+class _StudyCardItem {
   @PrimaryKey()
   late ObjectId id;
   late String widgetName;

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/flashcard.dart';
-import 'package:study_deck/flashcards/card_content/temp.dart';
+import 'package:study_deck/flashcards/hard_coded_deck.dart';
+import 'package:study_deck/flashcards/card_storage_schema/studycard.dart';
+import 'package:realm/realm.dart';
+import 'package:study_deck/flashcards/realm_to_widget.dart';
 
 /*  Class:  StudyPage, handles UI functionality for studying
     Parameters: title,  String, page title to be displayed 
@@ -15,8 +18,28 @@ class StudyPage extends StatefulWidget {
 
 // Class: _StudyPage, state management and UI for StudyPage
 class _StudyPage extends State<StudyPage> {
-  int cardIndex = 0;
-  Flashcard currCard = Flashcard(cardContent: content[0]);
+  int index = 0;
+  // The database
+  late Realm realm;
+  late RealmResults<StudyCard> studycards;
+  late List<Flashcard> theCards = realmListToFlashcards(studycards);
+  late Flashcard currCard = theCards[0];
+
+  @override
+  void initState() {
+    super.initState();
+    // Configure database
+    final config =
+        Configuration.local([StudyCard.schema, StudyCardItem.schema]);
+    realm = Realm(config);
+    studycards = realm.query<StudyCard>('deckName == "Sample Deck"');
+  }
+
+  @override
+  void dispose() {
+    realm.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +58,8 @@ class _StudyPage extends State<StudyPage> {
                   onPressed: () {
                     // User flips through flash cards, currently doesn't reset flip
                     setState(() {
-                      cardIndex = (cardIndex + 1) % content.length;
-                      currCard = Flashcard(cardContent: content[cardIndex]);
+                      index = (index + 1) % theCards.length;
+                      currCard = theCards[index];
                     });
                   },
                   label: const Text(''),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_deck/flashcards/card_content/card_item_temp.dart';
+import 'package:study_deck/flashcards/card_content/card_item.dart';
 
 /*  Class: StudyPronunciation, functionality of StudyWord's pronunciation
     Parameters: isOnFront,      bool,   see Item doc
