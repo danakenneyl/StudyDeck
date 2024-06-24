@@ -12,28 +12,27 @@ import 'package:study_deck/flashcards/card_content/card_items/study_translation.
 import 'package:study_deck/flashcards/card_content/card_items/study_word.dart';
 //        //        //        //
 
-// Class: StudyApp inherits from Stateless, is highest level widget of app
+// Function: Converts data from RealmDatabase into flutter widgets
 List<Flashcard> realmListToFlashcards(RealmResults<StudyCard> theCards) {
-  List<Flashcard> theFinalList = [];
+  List<Flashcard> flashcards = [];
   for (int i = 0; i < theCards.length; i++) {
     StudyCard studyCard = theCards[i];
-    // String deckName = studyCard.deckName;
     List<Widget> onTheFront = [];
     List<Widget> onTheBack = [];
 
     RealmList<StudyCardItem> front = studyCard.frontContent;
     for (int j = 0; j < front.length; j++) {
-      StudyCardItem studyCardItem = front[j];
-      String theContent = studyCardItem.content;
-      String theWidget = studyCardItem.widgetName;
+      StudyCardItem cardItem = front[j];
+      String content = cardItem.content;
+      String widgetName = cardItem.widgetName;
 
       // To be rewritten as a factory in later iterations
-      switch (theWidget) {
+      switch (widgetName) {
         case 'StudyAudio':
           break;
         case 'StudyDefinition':
           onTheFront.add(StudyDefinition(
-              isOnFront: studyCardItem.isOnFront, definition: theContent));
+              isOnFront: cardItem.isOnFront, definition: content));
           break;
         case 'StudyPicture':
           break;
@@ -42,7 +41,7 @@ List<Flashcard> realmListToFlashcards(RealmResults<StudyCard> theCards) {
         case 'StudyTranslation':
           break;
         case 'StudyWord':
-          onTheFront.add(StudyWord(isOnFront: true, vocabWord: theContent));
+          onTheFront.add(StudyWord(isOnFront: true, vocabWord: content));
           break;
       }
     }
@@ -50,16 +49,16 @@ List<Flashcard> realmListToFlashcards(RealmResults<StudyCard> theCards) {
     RealmList<StudyCardItem> back = studyCard.backContent;
     for (int k = 0; k < back.length; k++) {
       StudyCardItem studyCardItem = back[k];
-      String theContent = studyCardItem.content;
-      String theWidget = studyCardItem.widgetName;
+      String content = studyCardItem.content;
+      String widgetName = studyCardItem.widgetName;
 
       // To be rewritten as a factory in later iterations
-      switch (theWidget) {
+      switch (widgetName) {
         case 'StudyAudio':
           break;
         case 'StudyDefinition':
           onTheBack.add(StudyDefinition(
-              isOnFront: studyCardItem.isOnFront, definition: theContent));
+              isOnFront: studyCardItem.isOnFront, definition: content));
           break;
         case 'StudyPicture':
           break;
@@ -69,12 +68,11 @@ List<Flashcard> realmListToFlashcards(RealmResults<StudyCard> theCards) {
           break;
         case 'StudyWord':
           onTheBack.add(StudyWord(
-              isOnFront: studyCardItem.isOnFront, vocabWord: theContent));
+              isOnFront: studyCardItem.isOnFront, vocabWord: content));
           break;
       }
     }
-    theFinalList
-        .add(Flashcard(frontContent: onTheFront, backContent: onTheBack));
+    flashcards.add(Flashcard(frontContent: onTheFront, backContent: onTheBack));
   }
-  return theFinalList;
+  return flashcards;
 }

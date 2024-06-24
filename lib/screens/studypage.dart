@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_deck/flashcards/flashcard.dart';
-import 'package:study_deck/flashcards/hard_coded_deck.dart';
+// import 'package:study_deck/flashcards/hard_coded_deck.dart';
 import 'package:study_deck/flashcards/card_storage_schema/studycard.dart';
 import 'package:realm/realm.dart';
 import 'package:study_deck/flashcards/realm_to_widget.dart';
